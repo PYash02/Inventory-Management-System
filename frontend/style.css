@@ -96,7 +96,6 @@ table th, table td {
   font-family: "Poppins", sans-serif;
 }
 
-/* Sidebar */
 .sidebar {
   width: 240px;
   background-color: #1e1e2f;
@@ -136,7 +135,6 @@ table th, table td {
   color: #1e1e2f;
 }
 
-/* Logout Button */
 .logout-btn {
   background-color: #ff4d4d;
   border: none;
@@ -152,7 +150,6 @@ table th, table td {
   background-color: #ff6666;
 }
 
-/* Main Dashboard */
 .dashboard-main {
   flex: 1;
   padding: 40px;
@@ -183,7 +180,6 @@ table th, table td {
   color: #999;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .dashboard-container {
     flex-direction: column;
@@ -257,7 +253,6 @@ table th, table td {
   font-family: "Poppins", sans-serif;
 }
 
-/* Left pane */
 .left-pane {
   width: 200px;
   background-color: #4b6cb7; /* Blue */
@@ -272,8 +267,6 @@ table th, table td {
   color: #fff;
   margin-bottom: 30px;
 }
-
-/* Transparent buttons */
 .pane-btn {
   width: 100%;
   padding: 12px;
@@ -291,8 +284,6 @@ table th, table td {
 .pane-btn:hover {
   background: rgba(255,255,255,0.1);
 }
-
-/* Main section */
 .main-section {
   flex: 1;
   background: #f0f2f5;
@@ -313,7 +304,6 @@ body.dashboard-page {
   height: 100vh;
   font-family: "Poppins", sans-serif;
 }
-/* Main content */
 .main-content {
   flex: 1;
   display: flex;
@@ -322,25 +312,20 @@ body.dashboard-page {
   height: 100vh;
 }
 
-
-/* Current page title */
 .current-page {
   font-size: 1.2rem;
   font-weight: 500;
   color: #333;
 }
-/* Top section */
 .top-section {
   display: flex;
-  justify-content: flex-end; /* push content to right */
+  justify-content: flex-end; 
   align-items: center;
   padding: 15px 30px;
   background: #fff;
   position: relative;
   z-index: 2;
 }
-
-/* Logout button */
 .logout-btn {
   background: #e63946;
   color: #fff;
@@ -349,7 +334,7 @@ body.dashboard-page {
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9rem;
-  width: auto; /* make sure it doesn't stretch */
+  width: auto;
   max-width: 150px;
   transition: background 0.3s;
 }
@@ -358,16 +343,14 @@ body.dashboard-page {
   background: #b71c1c;
 }
 
-/* Divider line */
 .divider {
   height: 1px;
   background: rgba(0,0,0,0.1);
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
-/* Left pane */
 .left-pane {
   width: 200px;
-  background-color: #4b6cb7; /* Blue */
+  background-color: #4b6cb7; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -375,19 +358,15 @@ body.dashboard-page {
   box-shadow: 2px 0 8px rgba(0,0,0,0.2);
 }
 
-/* Current page title inside left pane */
-/* Left pane title */
 .left-page-title {
   color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
-  margin-bottom: 40px; /* increased space */
+  margin-bottom: 40px; 
   width: 100%;
   text-align: left;
   padding-left: 15px;
 }
-
-
 /* Navigation buttons */
 .pane-btn {
   width: 100%;
@@ -403,7 +382,6 @@ body.dashboard-page {
   transition: background 0.3s;
   padding-left: 15px;
 }
-
 .pane-btn:hover {
   background: rgba(255,255,255,0.1);
 }
@@ -417,23 +395,19 @@ body.dashboard-page {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 .user-table th,
 .user-table td {
   padding: 15px 20px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
 }
-
 .user-table th {
   background-color: #2563eb;
   color: #fff;
 }
-
 .user-table tr:last-child td {
   border-bottom: none;
 }
-/* ===== SETTINGS TABLE (vertical layout) ===== */
 /* ===== SETTINGS TABLE (vertical layout) ===== */
 .user-table {
   width: 100%;
@@ -444,27 +418,23 @@ body.dashboard-page {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 .user-table td {
   padding: 15px 20px;
   border-bottom: 1px solid #e5e7eb;
   vertical-align: middle;
 }
-
 .user-table .field-name {
   font-weight: bold;
   font-size: 18px;
   width: 30%;
   color: #2563eb;
 }
-
 .user-table .field-value {
   text-align: center;
   font-size: 18px;
   font-weight: 500;
   width: 60%;
 }
-
 .user-table .update-btn {
   background-color: #2563eb;
   color: #fff;
@@ -476,11 +446,9 @@ body.dashboard-page {
   width: 100%;
   text-align: center;
 }
-
 .user-table .update-btn:hover {
   background-color: #1e40af;
 }
-
 .update-input {
   padding: 5px;
   width: 90%;
@@ -499,7 +467,6 @@ body.dashboard-page {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
-
 .pending-table th, .pending-table td {
   padding: 15px 20px;
   vertical-align: middle;
@@ -507,16 +474,13 @@ body.dashboard-page {
   text-align: center;
   font-size: 16px;
 }
-
 .pending-table th {
   font-weight: bold;
   color: #1f2937;
 }
-
 .pending-table td {
   font-weight: 500;
 }
-
 .pending-table .btn {
   padding: 5px 8px;
   font-size: 14px;
@@ -524,21 +488,17 @@ body.dashboard-page {
   cursor: pointer;
   border: none;
 }
-
 .pending-table .btn.approve {
   background-color: #10b981;
   color: #fff;
 }
-
 .pending-table .btn.approve:hover {
   background-color: #059669;
 }
-
 .pending-table .btn.reject {
   background-color: #ef4444;
   color: #fff;
 }
-
 .pending-table .btn.reject:hover {
   background-color: #b91c1c;
 }
@@ -547,38 +507,32 @@ body.dashboard-page {
   border-collapse: collapse;
   margin-top: 1rem;
 }
-
 #inventoryTable th, #inventoryTable td {
   border: 1px solid #ccc;
   padding: 10px 15px;
   text-align: center;
 }
-
 #inventoryTable th {
   background-color: #f0f0f0;
   font-weight: 600;
 }
-
 #inventoryTable td {
   background-color: #fff;
 }
-
 #inventoryTable tr:nth-child(even) td {
   background-color: #fafafa;
 }
 /* Inventory page header buttons aligned with heading */
 .main-header {
   display: flex;
-  justify-content: space-between; /* Heading on left, buttons on right */
-  align-items: center; /* Vertically center heading and buttons */
+  justify-content: space-between;
+  align-items: center; 
   margin-bottom: 15px;
 }
-
 .inventory-buttons {
-  display: flex; /* Horizontal layout for buttons */
-  gap: 10px;     /* Space between buttons */
+  display: flex; 
+  gap: 10px;     
 }
-
 .inventory-buttons button {
   padding: 6px 12px;
   font-size: 0.85rem;
@@ -590,8 +544,6 @@ body.dashboard-page {
   object-fit: cover;
   border-radius: 8px;
 }
-
-/* Modal backdrop */
 .modal {
   display: none; 
   position: fixed;
@@ -603,8 +555,6 @@ body.dashboard-page {
   overflow: auto;
   background-color: rgba(0,0,0,0.5);
 }
-
-/* Modal content box */
 .modal-content {
   background-color: #fff;
   margin: 10% auto;
@@ -615,7 +565,6 @@ body.dashboard-page {
   position: relative;
 }
 
-/* Close button */
 .close-btn {
   position: absolute;
   top: 10px;
@@ -623,8 +572,6 @@ body.dashboard-page {
   font-size: 1.5rem;
   cursor: pointer;
 }
-
-/* Form inside modal */
 #createItemForm input {
   width: 100%;
   padding: 6px 10px;
@@ -638,28 +585,25 @@ body.dashboard-page {
   width: 100%;
   margin-top: 10px;
 }
-/* Update Modal container */
 #updateModal .modal-content {
-  max-width: 400px; /* Smaller width for update form */
+  max-width: 400px; 
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* Input fields in update modal */
 #updateModal input[type="text"],
 #updateModal input[type="number"] {
-  width: 100%; /* Make input boxes smaller than full width */
+  width: 100%;
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
-/* Buttons in update modal (similar to create modal) */
 #updateModal .btn {
-  width: 100%; /* Smaller button width */
+  width: 100%; 
   padding: 8px;
   margin-top: 10px;
   background-color: #4b6cb7;
@@ -672,7 +616,6 @@ body.dashboard-page {
   background-color: #182848;
 }
 
-/* Close button */
 #updateModal .close-btn {
   top: 10px;
   right: 15px;
