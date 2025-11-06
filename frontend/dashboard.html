@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Inventory System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <!-- Left Pane / Navigation -->
+    <aside class="left-pane">
+      <!-- Current Page Title -->
+      <div class="left-page-title">Dashboard</div>
+
+      <!-- Navigation Buttons -->
+      <button id="dashboardBtn" class="pane-btn">Dashboard</button>
+      <button id="inventoryBtn" class="pane-btn">Inventory</button>
+      <!-- <button id="supplierBtn" class="pane-btn">Supplier</button> -->
+      <button id="settingsBtn" class="pane-btn">Settings</button>
+    </aside>
+
+    <!-- Main Section -->
+    <div class="main-content">
+      <!-- Top section -->
+      <div class="top-section">
+        <div></div> <!-- empty placeholder -->
+        <button id="logoutBtn" class="btn logout-btn">Logout</button>
+      </div>
+
+      <!-- Divider line -->
+      <div class="divider"></div>
+
+      <!-- Main Dashboard Body -->
+      <main class="main-section">
+        <h1>Dashboard</h1>
+
+        <!-- KPI Cards -->
+<div class="kpi-container">
+  <div class="kpi-card">
+    <h3>Unique Items</h3>
+    <p id="kpi-unique">0</p>
+  </div>
+  <div class="kpi-card">
+    <h3>Total Items</h3>
+    <p id="kpi-total-items">0</p>
+  </div>
+  <div class="kpi-card">
+    <h3>Total Inventory Cost</h3>
+    <p id="kpi-total-cost">₹0</p>
+  </div>
+  <div class="kpi-card">
+    <h3>Total Users</h3>
+    <p id="kpi-total-users">0</p>
+  </div>
+  <div class="kpi-card">
+    <h3>Total Suppliers</h3>
+    <p id="kpi-total-suppliers">0</p>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

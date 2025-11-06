@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pending Users | Inventory System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <!-- Left Pane / Navigation -->
+    <aside class="left-pane">
+      <div class="left-page-title">Pending Users</div>
+
+      <!-- Navigation Buttons -->
+      <button id="dashboardBtn" class="pane-btn">Dashboard</button>
+      <button id="inventoryBtn" class="pane-btn">Inventory</button>
+      <!-- <button id="supplierBtn" class="pane-btn">Supplier</button> -->
+      <button id="settingsBtn" class="pane-btn">Settings</button>
+    </aside>
+
+    <!-- Main Section -->
+    <div class="main-content">
+      <div class="top-section">
+        <div></div>
+        <button id="logoutBtn" class="btn logout-btn">Logout</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <main class="main-section">
+        <h1>Pending Users</h1>
+
+        <!-- Divider Line -->
+        <div class="sub-divider"></div>
+
+        <!-- Pending Users Table -->
+        <table class="pending-table" id="pendingUsers">
+          <thead>
+            <tr>
+              <th style="width:30%">Name / UserID</th>
+              <th style="width:60%">Email / Contact / Role</th>
+              <th style="width:10%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Pending users will be dynamically loaded here -->
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

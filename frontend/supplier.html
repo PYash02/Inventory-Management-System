@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suppliers | Inventory System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <aside class="left-pane">
+      <div class="left-page-title">Dashboard</div>
+      <button id="dashboardBtn" class="pane-btn">Dashboard</button>
+      <button id="inventoryBtn" class="pane-btn">Inventory</button>
+      <!-- <button id="supplierBtn" class="pane-btn">Supplier</button> -->
+      <button id="settingsBtn" class="pane-btn">Settings</button>
+    </aside>
+
+    <div class="main-content">
+      <div class="top-section">
+        <div></div>
+        <button id="logoutBtn" class="btn logout-btn">Logout</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <main class="main-section">
+        <div class="main-header">
+          <h1>Suppliers</h1>
+          <div class="inventory-buttons">
+            <button id="createSupplierBtn" class="btn">Create</button>
+            <button id="updateSupplierBtn" class="btn">Update</button>
+            <button id="deleteSupplierBtn" class="btn">Delete</button>
+          </div>
+        </div>
+
+        <table id="supplierTable">
+          <thead>
+            <tr>
+              <th>Supplier ID</th>
+              <th>Supplier Name</th>
+              <th>Contact</th>
+              <th>Address</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modals (Create, Update, Delete) -->
+  <!-- Can replicate structure from inventory modals -->
+
+  <script src="supplier.js"></script>
+</body>
+</html>

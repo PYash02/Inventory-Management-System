@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings | Inventory System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <!-- Left Pane / Navigation -->
+    <aside class="left-pane">
+      <div class="left-page-title">Settings</div>
+      <button id="dashboardBtn" class="pane-btn">Dashboard</button>
+      <button id="inventoryBtn" class="pane-btn">Inventory</button>
+      <!-- <button id="supplierBtn" class="pane-btn">Supplier</button> -->
+      <button id="settingsBtn" class="pane-btn">Settings</button>
+    </aside>
+
+    <!-- Main Section -->
+    <div class="main-content">
+      <div class="top-section">
+        <div></div>
+        <button id="logoutBtn" class="btn logout-btn">Logout</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <main class="main-section">
+        <h1>User Details</h1>
+
+        <table class="user-table">
+          <tbody>
+            <tr>
+              <td class="field-name">Name</td>
+              <td class="field-value" id="currentName"></td>
+              <td>
+                <button class="btn update-btn" data-field="name">Update</button>
+                <input type="text" id="updateName" class="update-input" style="display:none" />
+              </td>
+            </tr>
+            <tr>
+              <td class="field-name">Email</td>
+              <td class="field-value" id="currentEmail"></td>
+              <td>
+                <button class="btn update-btn" data-field="email">Update</button>
+                <input type="text" id="updateEmail" class="update-input" style="display:none" />
+              </td>
+            </tr>
+            <tr>
+              <td class="field-name">Contact</td>
+              <td class="field-value" id="currentContact"></td>
+              <td>
+                <button class="btn update-btn" data-field="contact">Update</button>
+                <input type="text" id="updateContact" class="update-input" style="display:none" />
+              </td>
+            </tr>
+            <tr>
+              <td class="field-name">User ID</td>
+              <td class="field-value" id="currentUserId"></td>
+              <td><!-- User ID cannot be updated --></td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
