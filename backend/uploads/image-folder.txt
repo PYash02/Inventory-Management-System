@@ -1,0 +1,1 @@
+This is the directory where all the images uploaded on the website is stored. Please refrain from changing anything in this folder directly, only use the website to make any changes.
