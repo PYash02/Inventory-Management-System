@@ -11,23 +11,18 @@
     <!-- Left Pane / Navigation -->
     <aside class="left-pane">
       <div class="left-page-title">Dashboard</div>
-
       <button id="dashboardBtn" class="pane-btn">Dashboard</button>
       <button id="inventoryBtn" class="pane-btn">Inventory</button>
       <!-- <button id="supplierBtn" class="pane-btn">Supplier</button> -->
       <button id="settingsBtn" class="pane-btn">Settings</button>
     </aside>
-
     <!-- Main Section -->
     <div class="main-content">
-      <!-- Top section -->
       <div class="top-section">
-        <div></div> <!-- empty placeholder -->
+        <div></div>
         <button id="logoutBtn" class="btn logout-btn">Logout</button>
       </div>
-
       <div class="divider"></div>
-
       <!-- Inventory Main Section -->
       <main class="main-section">
         <div class="main-header">
@@ -38,7 +33,6 @@
             <button id="deleteBtn" class="btn">Delete</button>
           </div>
         </div>
-
         <table id="inventoryTable">
           <thead>
           <tr>
@@ -52,7 +46,6 @@
           </tr>
           </thead>
           <tbody>
-            <!-- Inventory data will populate here -->
           </tbody>
         </table>
       </main>
@@ -66,26 +59,18 @@
     <form id="createItemForm">
       <label for="itemImage">Item Image:</label>
       <input type="file" id="itemImage" name="image" accept="image/*" />
-
       <label for="itemId">Item ID:</label>
       <input type="text" id="itemId" name="itemId" required />
-
       <label for="itemName">Item Name:</label>
       <input type="text" id="itemName" name="itemName" required />
-
       <label for="itemQuantity">Item Quantity:</label>
       <input type="number" id="itemQuantity" min="0" value="0" required />
-
       <label for="itemCost">Item Cost:</label>
       <input type="number" id="itemCost" min="0" value="0" step="0.1" required />
-
-
       <label for="supplierName">Supplier Name:</label>
       <input type="text" id="supplierName" name="supplierName" required />
-
       <label for="supplierId">Supplier ID:</label>
       <input type="text" id="supplierId" name="supplierId" required />
-
       <button type="submit" class="btn">Create Item</button>
     </form>
   </div>
@@ -96,63 +81,43 @@
     <span class="close-btn">&times;</span>
     <h2>Update Inventory Item</h2>
     <form id="updateItemForm">
-      
       <label for="updateItemId">Item ID:</label>
       <input type="text" id="updateItemId" name="updateItemId" required />
-      <!-- Fetch button styled like Create button -->
       <button type="button" id="fetchItemBtn" class="btn">Fetch Item</button>
-
       <label for="updateItemImage">Update Item Image (optional):</label>
       <input type="file" id="updateItemImage" name="image" accept="image/*" />
-
       <label for="updateItemName">Item Name:</label>
       <input type="text" id="updateItemName" name="updateItemName" required />
-
       <label for="updateItemQuantity">Item Quantity:</label>
       <input type="number" id="updateItemQuantity" min="0" value="0" required />
-
       <label for="updateItemCost">Item Cost:</label>
       <input type="number" id="updateItemCost" min="0" value="0" step="0.1" required />
-
       <label for="updateSupplierName">Supplier Name:</label>
       <input type="text" id="updateSupplierName" name="updateSupplierName" required />
-
-      <!-- Supplier ID and Item ID are not editable -->
-
-      <!-- Update button styled like Create button -->
       <button type="submit" class="btn">Update Item</button>
     </form>
   </div>
 </div>
-
 <!-- Delete Item Modal -->
 <div id="deleteModal" class="modal">
   <div class="modal-content">
     <span class="close-btn" id="closeDeleteModal">&times;</span>
     <h2>Delete Inventory Item</h2>
-    
     <form id="deleteItemForm">
       <label for="deleteItemId">Item ID:</label>
       <input type="number" id="deleteItemId" required />
-
       <button type="button" id="fetchDeleteItemBtn" class="btn">Fetch Item</button>
-
       <div id="deleteItemDetails" style="margin-top: 15px; display: none;">
         <p><strong>Item Name:</strong> <span id="deleteItemName"></span></p>
         <p><strong>Quantity:</strong> <span id="deleteItemQuantity"></span></p>
         <p><strong>Cost:</strong> <span id="deleteItemCost"></span></p>
         <p><strong>Supplier:</strong> <span id="deleteSupplierName"></span></p>
         <p><strong>Supplier ID:</strong> <span id="deleteSupplierId"></span></p>
-
         <button type="submit" class="btn" style="background:red; margin-top:10px;">Delete Item</button>
       </div>
     </form>
   </div>
 </div>
-
-
-
-
   <script src="script.js"></script>
 </body>
 </html>
