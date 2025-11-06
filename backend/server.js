@@ -4,7 +4,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -28,9 +27,8 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
-
 // Serve images statically
+const upload = multer({ storage });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Create the `users` table if it doesn't exist
@@ -59,7 +57,6 @@ db.run(
         console.error("Error checking for admin:", err2.message);
         return;
       }
-
       if (!row) {
         db.run(
           `INSERT INTO users (name, userid, password, email, contact, approved, role)
@@ -71,14 +68,13 @@ db.run(
           }
         );
       } else {
-        console.log("ℹ️ Admin user already exists.");
+        console.log("Admin user already exists.");
       }
     });
   }
 );
 
 // ---------------- API ROUTES ----------------
-
 // Signup (new users, pending approval)
 app.post("/api/auth/signup", (req, res) => {
   const { name, userid, password, email, contact } = req.body;
@@ -86,20 +82,17 @@ app.post("/api/auth/signup", (req, res) => {
   if (!name || !userid || !password || !email || !contact) {
     return res.status(400).json({ message: "All fields are required" });
   }
-
   // === Backend Validation ===
   if (password.length < 8) {
     return res
       .status(400)
       .json({ message: "Password must be at least 8 characters long" });
   }
-
   if (!/^\d{10}$/.test(contact)) {
     return res
       .status(400)
       .json({ message: "Contact number must be exactly 10 digits" });
   }
-
   db.get("SELECT * FROM users WHERE userid = ?", [userid], (err, user) => {
     if (err) return res.status(500).json({ message: "DB error" });
     if (user) return res.status(400).json({ message: "User ID already exists" });
@@ -121,7 +114,6 @@ app.post("/api/auth/login", (req, res) => {
   const { userid, password } = req.body;
   if (!userid || !password)
     return res.status(400).json({ message: "User ID and password are required" });
-
   db.get(
     `SELECT id, name, userid, email, contact, approved, role FROM users WHERE userid = ? AND password = ?`,
     [userid, password],
@@ -129,12 +121,10 @@ app.post("/api/auth/login", (req, res) => {
       if (err) return res.status(500).json({ message: "DB error" });
       if (!user) return res.status(401).json({ message: "Invalid credentials" });
       if (!user.approved) return res.status(403).json({ message: "Await admin approval" });
-
       return res.json({ message: "Login successful", user });
     }
   );
 });
-
 // Get all pending users (for admin)
 app.get("/api/auth/pending", (req, res) => {
   db.all(
@@ -145,7 +135,6 @@ app.get("/api/auth/pending", (req, res) => {
     }
   );
 });
-
 // Approve user
 app.put("/api/auth/approve/:id", (req, res) => {
   const id = req.params.id;
@@ -155,7 +144,6 @@ app.put("/api/auth/approve/:id", (req, res) => {
     res.json({ message: "User approved successfully" });
   });
 });
-
 // Reject user (delete)
 app.delete("/api/auth/reject/:id", (req, res) => {
   const id = req.params.id;
@@ -165,17 +153,14 @@ app.delete("/api/auth/reject/:id", (req, res) => {
     res.json({ message: "User rejected and removed" });
   });
 });
-
 // Update user detail
 app.put("/api/user/update/:id", (req, res) => {
   const { id } = req.params;
   const { field, value } = req.body;
-
   const allowedFields = ["name", "email", "contact"];
   if (!allowedFields.includes(field)) {
     return res.status(400).json({ success: false, message: "Invalid field" });
   }
-
   db.run(`UPDATE users SET ${field} = ? WHERE id = ?`, [value, id], function(err) {
     if (err) return res.status(500).json({ success: false, message: "DB error" });
     res.json({ success: true, message: `${field} updated successfully` });
@@ -184,7 +169,6 @@ app.put("/api/user/update/:id", (req, res) => {
 // Get user by ID (for settings page)
 app.get("/api/user/by-userid/:userid", (req, res) => {
   const { userid } = req.params;
-
   db.get(
     "SELECT id, name, userid, email, contact, role FROM users WHERE userid = ?",
     [userid],
@@ -195,7 +179,6 @@ app.get("/api/user/by-userid/:userid", (req, res) => {
     }
   );
 });
-
 // Create the `inventory` table if it doesn't exist
 db.run(
   `CREATE TABLE IF NOT EXISTS inventory (
@@ -215,9 +198,7 @@ db.run(
     }
   }
 );
-
 // ---------------- Inventory API ----------------
-
 // Get all inventory items
 app.get("/api/inventory", (req, res) => {
   db.all("SELECT * FROM inventory", (err, rows) => {
@@ -225,17 +206,13 @@ app.get("/api/inventory", (req, res) => {
     res.json(rows);
   });
 });
-
 // Add new inventory item
-// Add new inventory item with image upload
 app.post("/api/inventory/create", upload.single("image"), (req, res) => {
   const { itemId, itemName, itemQuantity, itemCost, supplierName, supplierId } = req.body;
   const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
-
   if (!itemId || !itemName || !itemQuantity || !itemCost || !supplierName || !supplierId) {
     return res.status(400).json({ message: "All fields are required" });
   }
-
   db.run(
     `INSERT INTO inventory (itemId, itemName, itemQuantity, itemCost, supplierName, supplierId, imagePath)
      VALUES (?, ?, ?, ?, ?, ?, ?)`,
@@ -246,37 +223,26 @@ app.post("/api/inventory/create", upload.single("image"), (req, res) => {
     }
   );
 });
-
-
-
-
 // Update inventory item
 app.put("/api/inventory/:itemId", upload.single("image"), (req, res) => {
   const { itemId } = req.params;
   const { itemName, itemQuantity, itemCost, supplierName } = req.body;
   const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
-
   const query = imagePath
     ? `UPDATE inventory SET itemName = ?, itemQuantity = ?, itemCost = ?, supplierName = ?, imagePath = ? WHERE itemId = ?`
     : `UPDATE inventory SET itemName = ?, itemQuantity = ?, itemCost = ?, supplierName = ? WHERE itemId = ?`;
-
   const params = imagePath
     ? [itemName, itemQuantity, itemCost, supplierName, imagePath, itemId]
     : [itemName, itemQuantity, itemCost, supplierName, itemId];
-
   db.run(query, params, function (err) {
     if (err) return res.status(500).json({ message: "DB error: " + err.message });
     if (this.changes === 0) return res.status(404).json({ message: "Item not found" });
     res.json({ message: "Item updated successfully" });
   });
 });
-
-
-
 // Delete inventory item
 app.delete("/api/inventory/:itemId", (req, res) => {
   const { itemId } = req.params;
-
   db.run("DELETE FROM inventory WHERE itemId = ?", [itemId], function (err) {
     if (err) return res.status(500).json({ message: "DB error" });
     if (this.changes === 0) return res.status(404).json({ message: "Item not found" });
@@ -284,9 +250,7 @@ app.delete("/api/inventory/:itemId", (req, res) => {
   });
 });
 
-// --------------------------------------------
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
 // ---------------- Supplier Table ----------------
 db.run(
   `CREATE TABLE IF NOT EXISTS suppliers (
@@ -301,9 +265,7 @@ db.run(
     else console.log("Suppliers table ready.");
   }
 );
-
 // ------------- Supplier API ----------------
-
 // Get all suppliers
 app.get("/api/suppliers", (req, res) => {
   db.all("SELECT * FROM suppliers", (err, rows) => {
@@ -311,15 +273,12 @@ app.get("/api/suppliers", (req, res) => {
     res.json(rows);
   });
 });
-
 // Create supplier
 app.post("/api/suppliers/create", (req, res) => {
   const { supplierId, supplierName, contact, address, email } = req.body;
-
   if (!supplierId || !supplierName || !contact) {
     return res.status(400).json({ message: "SupplierId, Name and Contact are required" });
   }
-
   db.run(
     `INSERT INTO suppliers (supplierId, supplierName, contact, address, email)
      VALUES (?, ?, ?, ?, ?)`,
@@ -330,12 +289,10 @@ app.post("/api/suppliers/create", (req, res) => {
     }
   );
 });
-
 // Update supplier
 app.put("/api/suppliers/:supplierId", (req, res) => {
   const { supplierId } = req.params;
   const { supplierName, contact, address, email } = req.body;
-
   db.run(
     `UPDATE suppliers SET supplierName = ?, contact = ?, address = ?, email = ? WHERE supplierId = ?`,
     [supplierName, contact, address, email, supplierId],
@@ -346,11 +303,9 @@ app.put("/api/suppliers/:supplierId", (req, res) => {
     }
   );
 });
-
 // Delete supplier
 app.delete("/api/suppliers/:supplierId", (req, res) => {
   const { supplierId } = req.params;
-
   db.run("DELETE FROM suppliers WHERE supplierId = ?", [supplierId], function(err) {
     if (err) return res.status(500).json({ message: "DB error" });
     if (this.changes === 0) return res.status(404).json({ message: "Supplier not found" });
